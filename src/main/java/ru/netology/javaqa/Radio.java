@@ -9,8 +9,8 @@ public class Radio {
     }
 
     public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
-        if (newCurrentRadioStationNumber == 0) {
-            newCurrentRadioStationNumber = 9;
+        if (newCurrentRadioStationNumber < 9) {
+            currentRadioStationNumber = newCurrentRadioStationNumber +1;
             return;
         }
         if (newCurrentRadioStationNumber > 9) {
@@ -18,10 +18,6 @@ public class Radio {
             return;
         }
         currentRadioStationNumber = newCurrentRadioStationNumber;
-    }
-
-    public void setCurrentRadioStationNumber() {
-        currentRadioStationNumber = 9;
     }
 
     public int increaseVolume(int currentVolume) {
