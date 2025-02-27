@@ -4,46 +4,61 @@ public class Radio {
     private int currentRadioStationNumber;
     private int currentVolume;
 
-    public Radio() {
-        this.currentRadioStationNumber = 0; // Начинаем с первой станции
-        this.currentVolume = 0; // Начинаем с минимальной громкости
-    }
-
-    public void setMaxNumberStation() {
-        currentRadioStationNumber = 9; // Устанавливаем максимальную станцию
-    }
-
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
 
-    public void nextStationNumber() {
-        if (currentRadioStationNumber != 9) {
-            currentRadioStationNumber++; // Переход к следующей станции
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+        if (newCurrentRadioStationNumber < 0) {
+            return;
+        }
+        if (newCurrentRadioStationNumber > 9) {
+            return;
+        }
+        currentRadioStationNumber = newCurrentRadioStationNumber;
+    }
+
+    public void next() {
+        if (currentRadioStationNumber < 9) {
+            currentRadioStationNumber = currentRadioStationNumber + 1;
         } else {
-            currentRadioStationNumber = 0; // Если достигли максимума, возвращаемся к 0
+            currentRadioStationNumber = 0;
         }
     }
 
-    public void prevStationNumber() {
+    public void prev() {
         if (currentRadioStationNumber > 0) {
-            currentRadioStationNumber--; // Переход к предыдущей станции
+            currentRadioStationNumber = currentRadioStationNumber - 1;
         } else {
-            currentRadioStationNumber = 9; // Если на первой станции, переходим к максимальной
+            currentRadioStationNumber = 9;
         }
     }
 
-    public int increaseVolume() {
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume <0) {
+            newCurrentVolume = 0;
+        }
+        if (newCurrentVolume >100) {
+            newCurrentVolume = 100;
+        }
+        currentVolume = newCurrentVolume;
+    }
+
+    public void increaseVolume() {
         if (currentVolume < 100) {
-            currentVolume = currentVolume + 1; // Увеличиваем громкость
+            currentVolume = currentVolume + 1;
         }
-        return currentVolume;
     }
 
-    public int decreaseVolume() {
+    public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume = currentVolume - 1; // Уменьшаем громкость
+            currentVolume = currentVolume - 1;
         }
-        return currentVolume;
     }
+
+
 }
