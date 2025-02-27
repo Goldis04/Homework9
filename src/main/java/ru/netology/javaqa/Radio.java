@@ -1,44 +1,55 @@
 package ru.netology.javaqa;
 
 public class Radio {
-
+    private int minStation;
+    private int maxStation;
     private int currentRadioStationNumber;
 
-    public int getCurrentRadioStationNumber() {
+    public Radio() {
+        this.maxStation = 10;
+        this.minStation = 0;
+        this.currentRadioStationNumber = minStation;
+    }
 
+    public Radio(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
-    public void setMaxRadioStation() {
-        currentRadioStationNumber = 9;
+
+    public int getMaxStation() {
+        return maxStation;
     }
 
-    public void nextStation (int newCurrentRadioStationNumber) {
-        if (newCurrentRadioStationNumber > 9) {
+    public int getMinStation() {
+        return minStation;
+    }
+
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+        if (newCurrentRadioStationNumber < 0) {
+            return;
+        }
+        if (newCurrentRadioStationNumber > maxStation) {
+            return;
+        }
+        currentRadioStationNumber = newCurrentRadioStationNumber;
+    }
+
+    public void next() {
+        if (currentRadioStationNumber < maxStation) {
+            currentRadioStationNumber = currentRadioStationNumber + 1;
+        } else {
             currentRadioStationNumber = 0;
+        }
+    }
+
+    public void prev() {
+        if (currentRadioStationNumber > 0) {
+            currentRadioStationNumber = currentRadioStationNumber - 1;
         } else {
-            currentRadioStationNumber = newCurrentRadioStationNumber +1;
-        }
-
-    }
-    public void prevStation(int newCurrentRadioStationNumber) {
-        if (newCurrentRadioStationNumber > 0){
-            currentRadioStationNumber = newCurrentRadioStationNumber -1;
-        } else {
-            currentRadioStationNumber = 9;
+            currentRadioStationNumber = maxStation;
         }
     }
-    public int increaseVolume(int currentVolume) {
-        if (currentVolume < 100) {
-            currentVolume = currentVolume - 1;
-        }
-        return currentVolume;
-    }
-
-    public int decreaseVolume(int currentVolume) {
-        if (currentVolume > 0) {
-            currentVolume = currentVolume + 1;
-        }
-        return currentVolume;
-    }
-
 }
