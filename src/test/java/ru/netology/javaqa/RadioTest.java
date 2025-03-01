@@ -56,7 +56,7 @@ class RadioTest {
     }
 
     @Test
-    public void nextRadioStationNumberTest2() {  //
+    public void nextRadioStationNumberTest2() {
         Radio radio = new Radio();
 
         radio.setCurrentRadioStationNumber(9);
