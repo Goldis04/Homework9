@@ -20,7 +20,7 @@ class RadioTest {
     public void testCustomConstructor() {
         Radio radio = new Radio(15);
 
-        int expected = 15;
+        int expected = 14;
         int actual = radio.getMaxStation();
 
         Assertions.assertEquals(expected, actual);
@@ -108,11 +108,11 @@ class RadioTest {
 
     @Test
     public void prevRadioStationNumberTest2() {
-        Radio radio = new Radio(10);
-        radio.setCurrentRadioStationNumber(0);
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(10);
         radio.prev();
 
-        int expected = 10;
+        int expected = 9;
         int actual = radio.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
